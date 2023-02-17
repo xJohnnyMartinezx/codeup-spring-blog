@@ -33,4 +33,4 @@ build/
 .vscode/
 
 #App Props
-src/main/resources/application.properties
+application.properties
