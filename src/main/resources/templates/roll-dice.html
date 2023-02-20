@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Roll-Dice</title>
+</head>
+<body>
+<main>
+    <div>
+        <h1 class="text-center m-5">Guess a number!</h1>
+        <div class="d-flex justify-content-evenly">
+            <a href="/roll-dice/1" type="button" class="btn btn-lg btn-primary col-1">1</a>
+            <a href="/roll-dice/2" type="button" class="btn btn-lg btn-secondary col-1">2</a>
+            <a href="/roll-dice/3" type="button" class="btn btn-lg btn-success col-1">3</a>
+            <a href="/roll-dice/4" type="button" class="btn btn-lg btn-danger col-1">4</a>
+            <a href="/roll-dice/5" type="button" class="btn btn-lg btn-warning col-1">5</a>
+            <a href="/roll-dice/6" type="button" class="btn btn-lg btn-info col-1">6</a>
+        </div>
+        <div class="d-flex justify-content-evenly m-5">
+            <div>
+                <h2 class="text-center">Your Guess:</h2>
+                <h2 class="text-center"><span th:text="${numGuessed}">1</span></h2>
+            </div>
+            <div>
+                <h2 class="text-center">Result:</h2>
+                <h2 class="text-center"><span th:text="${answer}">1</span></h2>
+            </div>
+        </div>
+        <div class="alert alert-success" th:if="${correctGuess}">
+            <h1 class="text-center">Way to go! Your guess is correct!</h1>
+        </div>
+        <div class="alert alert-danger" th:if="${incorrectGuess}">
+            <h1 class="text-center">Better luck next time, try again.</h1>
+        </div>
+    </div>
+
+</main>
+</body>
+</html>
