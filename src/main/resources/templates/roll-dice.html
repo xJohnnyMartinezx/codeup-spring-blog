@@ -1,25 +1,27 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<div th:replace="partials/header :: header">
-
-</div>
 <head>
     <meta charset="UTF-8" />
     <title>Roll-Dice</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 <body>
-<!--<nav th:replace="partials :: navbar">-->
-<!--    This is the Navbar-->
-<!--</nav>-->
+<div th:replace="partials/navbar :: navbar">
+
+</div>
+<div th:replace="partials/header :: header">
+
+</div>
 <main>
     <div>
         <h1 class="text-center m-5">Guess a number!</h1>
         <div class="d-flex justify-content-evenly">
-            <a href="/roll-dice/1" type="button" class="btn btn-lg btn-primary col-1">1</a>
-            <a href="/roll-dice/2" type="button" class="btn btn-lg btn-secondary col-1">2</a>
+            <a href="/roll-dice/1" type="button" class="btn btn-lg btn-danger col-1">1</a>
+            <a href="/roll-dice/2" type="button" class="btn btn-lg btn-warning col-1">2</a>
             <a href="/roll-dice/3" type="button" class="btn btn-lg btn-success col-1">3</a>
-            <a href="/roll-dice/4" type="button" class="btn btn-lg btn-danger col-1">4</a>
-            <a href="/roll-dice/5" type="button" class="btn btn-lg btn-warning col-1">5</a>
+            <a href="/roll-dice/4" type="button" class="btn btn-lg btn-primary col-1">4</a>
+            <a href="/roll-dice/5" type="button" class="btn btn-lg btn-secondary col-1">5</a>
             <a href="/roll-dice/6" type="button" class="btn btn-lg btn-info col-1">6</a>
         </div>
         <div class="d-flex justify-content-evenly m-5">
@@ -42,4 +44,7 @@
 
 </main>
 </body>
+<div th:replace="partials/footer :: footer">
+
+</div>
 </html>
