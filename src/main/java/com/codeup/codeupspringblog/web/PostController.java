@@ -37,4 +37,7 @@ public class PostController {
     public String createNewPost(){
         return "posts";
     }
+
+
+//    This is a test comment
 }
