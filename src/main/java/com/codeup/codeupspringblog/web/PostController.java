@@ -38,6 +38,4 @@ public class PostController {
         return "posts";
     }
 
-
-//    This is a test comment
 }
