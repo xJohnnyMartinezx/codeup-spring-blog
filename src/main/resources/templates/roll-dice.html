@@ -6,38 +6,38 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
-<body>
+<body style="background:#000;">
 <div th:replace="partials/navbar :: navbar">
 
 </div>
 <div th:replace="partials/header :: header">
 
 </div>
-<main>
+<main >
     <div>
-        <h1 class="text-center m-5">Guess a number!</h1>
+        <h1 class="text-center m-5" style="color: coral">Guess a number!</h1>
         <div class="d-flex justify-content-evenly">
-            <a href="/roll-dice/1" type="button" class="btn btn-lg btn-danger col-1">1</a>
-            <a href="/roll-dice/2" type="button" class="btn btn-lg btn-warning col-1">2</a>
-            <a href="/roll-dice/3" type="button" class="btn btn-lg btn-success col-1">3</a>
-            <a href="/roll-dice/4" type="button" class="btn btn-lg btn-primary col-1">4</a>
-            <a href="/roll-dice/5" type="button" class="btn btn-lg btn-secondary col-1">5</a>
-            <a href="/roll-dice/6" type="button" class="btn btn-lg btn-info col-1">6</a>
+            <a href="/roll-dice/1" type="button" class="btn btn-lg btn-outline-danger col-1">1</a>
+            <a href="/roll-dice/2" type="button" class="btn btn-lg btn-outline-warning col-1">2</a>
+            <a href="/roll-dice/3" type="button" class="btn btn-lg btn-outline-success col-1">3</a>
+            <a href="/roll-dice/4" type="button" class="btn btn-lg btn-outline-primary col-1">4</a>
+            <a href="/roll-dice/5" type="button" class="btn btn-lg btn-outline-secondary col-1">5</a>
+            <a href="/roll-dice/6" type="button" class="btn btn-lg btn-outline-info col-1">6</a>
         </div>
         <div class="d-flex justify-content-evenly m-5">
             <div>
-                <h2 class="text-center">Your Guess:</h2>
-                <h2 class="text-center"><span th:text="${numGuessed}">1</span></h2>
+                <h2 class="text-center" style="color: darkcyan">Your Guess:</h2>
+                <h2 class="text-center" style="color: chartreuse"><span th:text="${numGuessed}">1</span></h2>
             </div>
             <div>
-                <h2 class="text-center">Result:</h2>
-                <h2 class="text-center"><span th:text="${answer}">1</span></h2>
+                <h2 class="text-center" style="color: darkcyan">Result:</h2>
+                <h2 class="text-center" style="color: chartreuse"><span th:text="${answer}">1</span></h2>
             </div>
         </div>
-        <div class="alert alert-success" th:if="${correctGuess}">
+        <div class="alert alert-success" th:if="${correctGuess}" style="background:#000;">
             <h1 class="text-center">Way to go! Your guess is correct!</h1>
         </div>
-        <div class="alert alert-danger" th:if="${incorrectGuess}">
+        <div class="alert alert-danger" th:if="${incorrectGuess}" style="background:#000;">
             <h1 class="text-center">Better luck next time, try again.</h1>
         </div>
     </div>
