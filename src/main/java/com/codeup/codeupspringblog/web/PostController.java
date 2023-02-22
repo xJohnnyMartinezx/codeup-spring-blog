@@ -31,7 +31,7 @@ public class PostController {
         return "posts/show";
     }
 
-    //    ****** View posts by ID *******
+    //    ****** View a single designated post *******
     @GetMapping("/posts/index")
     public String viewSinglePost(Model model){
 
@@ -55,5 +55,23 @@ public class PostController {
         posts.add(newPost);
         return "redirect:/posts/show";
     }
+
+//       ****** View posts by ID *******
+
+//    @GetMapping("post/individual-post")
+//    public String viewPostById(){
+//        return "posts/individual-post";
+//    }
+
+    @GetMapping("/posts/{id}")
+    public String postById(@PathVariable long id, Model model) {
+        for (Post post : posts) {
+            if (post.getId() == id) {
+                model.addAttribute("indiPost", post);
+            }
+        }
+        return "/posts/individual-post";
+    }
+
 
 }

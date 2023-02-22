@@ -8,7 +8,9 @@
 You are viewing the show page. Here is a list of posts.
 
 <ul>
-    <li th:each="post : ${postList}" th:text="${post.title + ': ' + post.body}"></li>
+    <li th:each="post : ${postList}">
+        <a th:href="@{/posts/{id} (id = ${post.id})}"  th:text="${post.title}"></a>
+    </li>
 </ul>
 
 
