@@ -38,4 +38,16 @@ public class PostController {
         return "posts";
     }
 
+
+//    ***** Views for index and show html files. ******
+    @GetMapping("/posts/index")
+    public String viewIndex(){
+        return "posts/index";
+    }
+
+    @GetMapping("/posts/show")
+    public String viewShow(){
+        return "posts/show";
+    }
+
 }
