@@ -5,11 +5,12 @@
     <title>Create a Post</title>
 </head>
 <body>
-<form>
+<form method="POST" action="/posts/create">
     <label for="title">Title</label>
     <input type="text" name="title" id="title">
     <label for="body">Post Contents:</label>
     <input type="text" name="body" id="body">
+    <button type="submit">Submit</button>
 </form>
 
 </body>
