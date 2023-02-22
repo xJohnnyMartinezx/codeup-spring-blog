@@ -1,53 +1,61 @@
 package com.codeup.codeupspringblog.web;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 public class PostController {
 
+    private List<Post> posts = new ArrayList<>();
+
 
 //    ****** View all posts *******
-    @GetMapping("/posts")
-    @ResponseBody
-    public String posts(){
-        return "posts";
+    @GetMapping("/posts/show")
+    public String viewAllPosts(Model model){
+
+        Post post2 = new Post(2, "My Second Post","This is the body of my Second post");
+        Post post3 = new Post(3, "My Third Post","This is the body of my Third post");
+        Post post4 = new Post(4, "My Fourth Post","This is the body of my Fourth post");
+
+
+        posts.add(post2);
+        posts.add(post3);
+        posts.add(post4);
+
+        model.addAttribute("postList", posts);
+
+        return "posts/show";
     }
 
     //    ****** View posts by ID *******
-    @GetMapping("/posts/{id}")
-    @ResponseBody
-    public String posts(@PathVariable int id){
-        return "<h1>" + "post with ID of: " + id + "</h1>";
+    @GetMapping("/posts/index")
+    public String viewSinglePost(Model model){
+
+        Post post1 = new Post(1,"My First Post", "This is the body of my first post");
+
+        model.addAttribute("firstPost", post1);
+
+        return "posts/index";
     }
 
     //    ****** View form for creating a post *******
     @GetMapping("/posts/create")
-    @ResponseBody
     public String createPostsForm(){
-        return "posts";
+        return "posts/posts-form";
     }
 
     //    ****** Create a new post *******
-    @PostMapping("/posts/create")
-    @ResponseBody
-    public String createNewPost(){
-        return "posts";
-    }
-
-
-//    ***** Views for index and show html files. ******
-    @GetMapping("/posts/index")
-    public String viewIndex(){
-        return "posts/index";
-    }
-
-    @GetMapping("/posts/show")
-    public String viewShow(){
-        return "posts/show";
-    }
+//    @PostMapping("/posts/create")
+//    @ResponseBody
+//    public String createNewPost(){
+//        return "posts";
+//    }
 
 }

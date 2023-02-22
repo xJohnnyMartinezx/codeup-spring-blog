@@ -5,6 +5,12 @@
     <title>Show Page</title>
 </head>
 <body>
-You are viewing the show page.
+You are viewing the show page. Here is a list of posts.
+
+<ul>
+    <li th:each="post : ${postList}" th:text="${post.title + ': ' + post.body}"></li>
+</ul>
+
+
 </body>
 </html>
