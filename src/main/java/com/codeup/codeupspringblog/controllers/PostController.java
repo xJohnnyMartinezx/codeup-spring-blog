@@ -1,7 +1,9 @@
 package com.codeup.codeupspringblog.controllers;
 
 import com.codeup.codeupspringblog.models.Post;
+import com.codeup.codeupspringblog.models.User;
 import com.codeup.codeupspringblog.repositories.PostRepository;
+import com.codeup.codeupspringblog.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -9,12 +11,16 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class PostController {
 
+//    ***** DEPENDENCY INJECTION FIELD/S *****
     private PostRepository postDao;
+    private UserRepository userDao;
 
-    public PostController(PostRepository postDao) {
+//    ***** CONSTRUCTORS *******
+
+    public PostController(UserRepository userDao, PostRepository postDao) {
+        this.userDao = userDao;
         this.postDao = postDao;
     }
-
 
 //    ****** View all posts *******
     @GetMapping("/posts/show")
@@ -43,8 +49,10 @@ public class PostController {
 
 //        ****** Create a new post *******
     @PostMapping("/posts/create")
-    public String createNewPost(@RequestParam String title, @RequestParam String body){
+    public String createNewPost(@RequestParam String title, @RequestParam String body ){
+        User user = userDao.getById(1L);
         Post newPost = new Post(title, body);
+        newPost.setUser(user);
         postDao.save(newPost);
         return "redirect:/posts/show";
     }
