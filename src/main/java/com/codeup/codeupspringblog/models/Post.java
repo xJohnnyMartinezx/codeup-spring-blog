@@ -1,11 +1,19 @@
 package com.codeup.codeupspringblog.models;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "posts")
 public class Post {
 
 
 //    ****** Properties ********
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column(length = 150, nullable = false)
     private String title;
+    @Column(columnDefinition = "TEXT NOT NULL")
     private String body;
 
 //    ***** Constructor *********
