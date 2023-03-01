@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 public class PostController {
 
@@ -65,8 +67,12 @@ public class PostController {
 //    }
 
     @GetMapping("/posts/{id}")
-    public String postById(@PathVariable long id, Model model) {
-                model.addAttribute("indiPost", postDao.findById(id).get());
+    public String postById(@PathVariable long id, String userEmail, Model model) {
+
+//        System.out.println(user.getEmail());
+        model.addAttribute("indiPost", postDao.findById(id).get());
+        model.addAttribute("userNameOfPoster", userDao.findByEmail(userEmail));
+        System.out.println(userDao.findByEmail(userEmail));
         return "/posts/individual-post";
     }
 

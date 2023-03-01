@@ -30,7 +30,11 @@ public class Post {
         this.body = body;
     }
 
-//    ******* Getters and Setters ********
+    public Post(User user) {
+        this.user = user;
+    }
+
+    //    ******* Getters and Setters ********
 
     //   ************ USERS ************
 
