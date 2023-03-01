@@ -4,6 +4,7 @@ import com.codeup.codeupspringblog.models.Post;
 import com.codeup.codeupspringblog.models.User;
 import com.codeup.codeupspringblog.repositories.PostRepository;
 import com.codeup.codeupspringblog.repositories.UserRepository;
+import com.codeup.codeupspringblog.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -17,11 +18,14 @@ public class PostController {
     private PostRepository postDao;
     private UserRepository userDao;
 
+    private UserService userService;
+
 //    ***** CONSTRUCTORS *******
 
-    public PostController(UserRepository userDao, PostRepository postDao) {
+    public PostController(UserRepository userDao, PostRepository postDao, UserService userService) {
         this.userDao = userDao;
         this.postDao = postDao;
+        this.userService = userService;
     }
 
 //    ****** View all posts *******
@@ -74,6 +78,11 @@ public class PostController {
         model.addAttribute("userNameOfPoster", userDao.findByEmail(userEmail));
         System.out.println(userDao.findByEmail(userEmail));
         return "/posts/individual-post";
+    }
+
+    @GetMapping("{email}")
+    public User getUserEmail(@PathVariable String userEmail){
+        return userService.getUserByEmail(userEmail);
     }
 
 
