@@ -9,22 +9,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @Controller
 public class PostController {
 
 //    ***** DEPENDENCY INJECTION FIELD/S *****
-    private PostRepository postDao;
-    private UserRepository userDao;
+    private PostRepository postRepository;
+    private UserRepository userRepository;
 
     private UserService userService;
 
 //    ***** CONSTRUCTORS *******
 
-    public PostController(UserRepository userDao, PostRepository postDao, UserService userService) {
-        this.userDao = userDao;
-        this.postDao = postDao;
+    public PostController(UserRepository userRepository, PostRepository postRepository, UserService userService) {
+        this.userRepository = userRepository;
+        this.postRepository = postRepository;
         this.userService = userService;
     }
 
@@ -32,7 +31,7 @@ public class PostController {
     @GetMapping("/posts/show")
     public String viewAllPosts(Model model){
 
-        model.addAttribute("postList", postDao.findAll());
+        model.addAttribute("postList", postRepository.findAll());
 
         return "posts/show";
     }
@@ -56,10 +55,10 @@ public class PostController {
 //        ****** Create a new post *******
     @PostMapping("/posts/create")
     public String createNewPost(@RequestParam String title, @RequestParam String body ){
-        User user = userDao.getById(1L);
+        User user = userRepository.getById(1L);
         Post newPost = new Post(title, body);
         newPost.setUser(user);
-        postDao.save(newPost);
+        postRepository.save(newPost);
         return "redirect:/posts/show";
     }
 
@@ -71,19 +70,16 @@ public class PostController {
 //    }
 
     @GetMapping("/posts/{id}")
-    public String postById(@PathVariable long id, String userEmail, Model model) {
-
-//        System.out.println(user.getEmail());
-        model.addAttribute("indiPost", postDao.findById(id).get());
-        model.addAttribute("userNameOfPoster", userDao.findByEmail(userEmail));
-        System.out.println(userDao.findByEmail(userEmail));
+    public String postById(@PathVariable long id, @RequestParam String email, Model model) {
+        model.addAttribute("indiPost", postRepository.findById(id).get());
+        model.addAttribute("userEmail", userRepository.findByEmail(email));
         return "/posts/individual-post";
     }
 
-    @GetMapping("{email}")
-    public User getUserEmail(@PathVariable String userEmail){
-        return userService.getUserByEmail(userEmail);
-    }
+//    @GetMapping("/{email}")
+//    public User getUserEmail(@PathVariable String userEmail){
+//        return userRepository.findByEmail(userEmail);
+//    }
 
 
 }
