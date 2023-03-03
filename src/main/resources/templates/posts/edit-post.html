@@ -9,7 +9,9 @@
 <body>
 <nav th:replace="~{partials/partials.html :: navbar}"></nav>
 
-<form th:action="@{/posts/{id}/edit (id= ${indiPost.id})}" th:method="POST" th:object="${indiPost}">
+<!--<form th:action="@{/posts/{id}/edit (id= ${indiPost.id})}" th:method="POST" th:object="${indiPost}">-->
+<form th:action="@{'/posts/' + ${indiPost.getId()} + '/edit'}" th:method="POST" th:object="${indiPost}">
+
   Title:
   <input th:field="*{title}">
   <br />

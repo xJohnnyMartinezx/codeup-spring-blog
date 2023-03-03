@@ -60,7 +60,6 @@ public class PostController {
         @GetMapping("/posts/{id}/edit")
         public String editPostForm(@PathVariable long id, Model model){
             model.addAttribute("indiPost", postRepository.findById(id).get());
-//            model.addAttribute("postToEdit", new Post());
                     return "posts/edit-post";
         }
 
