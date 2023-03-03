@@ -49,11 +49,26 @@ public class PostController {
 
 //        ****** Create a new post (MODEL BIDING) *******
     @PostMapping("/posts/create")
-    public String createNewPost(@ModelAttribute Post post){
+    public String createNewPost(@ModelAttribute Post post) {
         User user = userRepository.getById(1L);
         post.setUser(user);
         postRepository.save(post);
         return "redirect:/posts/show";
+    }
+
+//        ****** Edit an existing Post *******
+        @GetMapping("/posts/{id}/edit")
+        public String editPostForm(@PathVariable long id, Model model){
+            model.addAttribute("indiPost", postRepository.findById(id).get());
+//            model.addAttribute("postToEdit", new Post());
+                    return "posts/edit-post";
+        }
+
+    @PostMapping("/posts/{id}/edit")
+    public String editPost(@PathVariable long id, @ModelAttribute Post post){
+        postRepository.save(post);
+        return "redirect:/posts/" + id;
+    }
 
 //        //    ****** View form for creating a post WITHOUT MODEL BINDING *******
 //        @GetMapping("/posts/create")
@@ -70,7 +85,7 @@ public class PostController {
 //            postRepository.save(newPost);
 //            return "redirect:/posts/show";
 //        }
-    }
+
 
 //       ****** View posts by ID *******
 
@@ -84,6 +99,8 @@ public class PostController {
         model.addAttribute("indiPost", postRepository.findById(id).get());
         return "posts/individual-post";
     }
+
+
 
 
 }
