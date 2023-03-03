@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Show Page</title>
-    <th:block th:insert="partials/partials.html :: head-styles">
+    <th:block th:insert="~{partials/partials.html :: head-styles}">
 
     </th:block>
 </head>
 <body>
-<nav th:replace="partials/partials.html :: navbar"></nav>
+<nav th:replace="~{partials/partials.html :: navbar}"></nav>
 
 You are viewing the show page. Here is a list of posts.
 
@@ -18,6 +18,6 @@ You are viewing the show page. Here is a list of posts.
     </li>
 </ul>
 
-<th:block th:insert="partials/partials.html :: scripts"></th:block>
+<th:block th:insert="~{partials/partials.html :: scripts}"></th:block>
 </body>
 </html>

@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Roll-Dice</title>
-    <th:block th:insert="partials/partials.html :: head-styles">
+    <th:block th:insert="~{partials/partials.html :: head-styles}">
 
     </th:block>
 </head>
 <body style="background:#000;">
-<nav th:replace="partials/partials.html :: navbar"></nav>
+<nav th:replace="~{partials/partials.html :: navbar}"></nav>
 <main >
     <div>
         <h1 class="text-center m-5" style="color: coral">Guess a number!</h1>
@@ -39,6 +39,6 @@
     </div>
 
 </main>
-<th:block th:insert="partials/partials.html :: scripts"></th:block>
+<th:block th:insert="~{partials/partials.html :: scripts}"></th:block>
 </body>
 </html>

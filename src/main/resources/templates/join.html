@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8" />
     <title>Join</title>
-    <th:block th:insert="partials/partials.html :: head-styles"></th:block>
+    <th:block th:insert="~{partials/partials.html :: head-styles}"></th:block>
 
 </head>
 <body>
-<nav th:replace="partials/partials.html :: navbar"></nav>
+<nav th:replace="~{partials/partials.html :: navbar}"></nav>
 
 <h1 th:text="${cohort}"></h1>
 
@@ -16,7 +16,7 @@
     <button>Join now</button>
 </form>
 
-<th:block th:insert="partials/partials.html :: scripts"></th:block>
+<th:block th:insert="~{partials/partials.html :: scripts}"></th:block>
 
 </body>
 </html>
