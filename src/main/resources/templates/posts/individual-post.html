@@ -6,11 +6,15 @@
 </head>
 <body>
 
+
 <h1 th:text="${indiPost.title}"></h1>
 
 <h5 th:text="${indiPost.body}"></h5>
 
+<!--  <a>TAG AROUND BUTTON TAG ENABLES REDIRECT TO "EDIT-FORM" ON CLICK-->
+<a th:href="@{'/posts/' + ${indiPost.getId()} + '/edit'}" th:object="${indiPost}">
 <button>Edit this Post</button>
+</a>
 
 </body>
 </html>

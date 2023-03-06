@@ -13,7 +13,9 @@
 You are viewing the show page. Here is a list of posts.
 
 <ul>
+<!--    LOOPING THROUGH ALL POSTS BY USING POST REPO(EXTENDS JPA REPO) findAll() METHOD IN POST CONTROLLER -->
     <li th:each="post : ${postList}">
+<!--       DISPLAYING EACH INDIVIDUAL POSTS TITLE -->
         <a th:href="@{/posts/{id} (id = ${post.id})}"  th:text="${post.title}"></a>
     </li>
 </ul>
