@@ -82,10 +82,10 @@ public class PostController {
 
 //       ****** View posts by ID *******
 
-    @GetMapping("post/individual-post")
-    public String viewPostById() {
-        return "posts/individual-post";
-    }
+//    @GetMapping("post/individual-post")
+//    public String viewPostById() {
+//        return "posts/individual-post";
+//    }
 
     @GetMapping("/posts/{id}")
     public String postById(@PathVariable long id, Model model) {

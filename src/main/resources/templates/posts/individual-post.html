@@ -6,7 +6,7 @@
 </head>
 <body>
 
-
+<!-- DISPLAYING THE POSTS TITLE AND BODY THAT HAS BEEN PASSED IN FROM -->
 <h1 th:text="${indiPost.title}"></h1>
 
 <h5 th:text="${indiPost.body}"></h5>
@@ -14,6 +14,9 @@
 <!--  <a>TAG AROUND BUTTON TAG ENABLES REDIRECT TO "EDIT-FORM" ON CLICK-->
 <a th:href="@{'/posts/' + ${indiPost.getId()} + '/edit'}" th:object="${indiPost}">
 <button>Edit this Post</button>
+</a>
+<a th:href="@{/posts/show}">
+    <button>Cancel</button>
 </a>
 
 </body>
