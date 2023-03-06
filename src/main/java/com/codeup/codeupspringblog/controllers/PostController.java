@@ -4,6 +4,7 @@ import com.codeup.codeupspringblog.models.Post;
 import com.codeup.codeupspringblog.models.User;
 import com.codeup.codeupspringblog.repositories.PostRepository;
 import com.codeup.codeupspringblog.repositories.UserRepository;
+import com.codeup.codeupspringblog.service.EmailService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,11 +16,14 @@ public class PostController {
     //    ***** DEPENDENCY INJECTION FIELD/S *****
     private PostRepository postRepository;
     private UserRepository userRepository;
+    private final EmailService emailService;
+
 
     //    ***** CONSTRUCTORS *******
-    public PostController(UserRepository userRepository, PostRepository postRepository) {
+    public PostController(UserRepository userRepository, PostRepository postRepository, EmailService emailService) {
         this.userRepository = userRepository;
         this.postRepository = postRepository;
+        this.emailService = emailService;
     }
 
     //    ****** View all posts *******
@@ -37,13 +41,15 @@ public class PostController {
         return "posts/create-posts-form";
     }
 
-    //    ****** Create a new post (MODEL BIDING & ASSIGNED USER MANUALLY) *******
     @PostMapping("/posts/create")
     public String createNewPost(@ModelAttribute Post post) {
 //        MANUALLY GETTING/PICKING A USER
         User user = userRepository.getById(1L);
 //        ASSIGNING THE CREATED POST TO THE USER
         post.setUser(user);
+//        SENDS A CONFIRMATION EMAIL TO THE USER STATING THAT A NEW POST HAS BEEN CREATED.
+        emailService.prepareAndSend(
+                post, "New Post Created", "A new post has been created");
 //        SAVING THE CREATED POST TO POSTS REPO
         postRepository.save(post);
 //        REDIRECTING TO VIEW ALL POSTS PAGE
