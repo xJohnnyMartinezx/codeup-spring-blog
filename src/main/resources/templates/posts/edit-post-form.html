@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta charset="UTF-8">
-  <title>Edit Post</title>
-  <th:block th:insert="~{partials/partials.html :: head-styles}"></th:block>
+  <head>
+      <meta charset="UTF-8">
+      <title>Edit Post</title>
+      <th:block th:insert="~{partials/partials.html :: head-styles}"></th:block>
 
-</head>
-<body>
-<nav th:replace="~{partials/partials.html :: navbar}"></nav>
+  </head>
+  <body>
+    <nav th:replace="~{partials/partials.html :: navbar}"></nav>
 
-<form th:action="@{'/posts/' + ${indiPost.getId()} + '/edit'}" th:method="POST" th:object="${indiPost}">
+    <form th:action="@{'/posts/' + ${indiPost.getId()} + '/edit'}" th:method="POST" th:object="${indiPost}">
 
-  Title:
-  <input th:field="*{title}">
-  <br />
-  Post Contents:
-  <textarea th:field="*{body}" rows="10" cols="20">
-    </textarea>
-  <button type="submit">Submit Edits</button>
-</form>
+        Title:
+        <input th:field="*{title}">
+        <br/>
+        Post Contents:
+        <textarea th:field="*{body}" rows="10" cols="20">
+        </textarea>
+        <button type="submit">Submit Edits</button>
+    </form>
 
-<th:block th:insert="~{partials/partials.html :: scripts}"></th:block>
-</body>
+    <th:block th:insert="~{partials/partials.html :: scripts}"></th:block>
+  </body>
 </html>

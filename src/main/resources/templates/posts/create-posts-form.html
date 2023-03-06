@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Create a Post</title>
-    <th:block th:insert="~{partials/partials.html :: head-styles}"></th:block>
+    <head>
+        <meta charset="UTF-8">
+        <title>Create a Post</title>
+        <th:block th:insert="~{partials/partials.html :: head-styles}"></th:block>
 
-</head>
-<body>
-<nav th:replace="~{partials/partials.html :: navbar}"></nav>
+    </head>
+    <body>
+        <nav th:replace="~{partials/partials.html :: navbar}"></nav>
 
-<form th:method="POST" th:action="@{/posts/create}" th:object="${post}">
-    Title:
-    <input th:field="*{title}">
-    <br />
-    Post Contents:
-    <textarea th:field="*{body}" rows="10" cols="20">
-    </textarea>
-    <button type="submit">Create Post</button>
-</form>
+        <form th:method="POST" th:action="@{/posts/create}" th:object="${post}">
+            Title:
+            <input th:field="*{title}">
+            <br/>
+            Post Contents:
+            <textarea th:field="*{body}" rows="10" cols="20">
+            </textarea>
+            <button type="submit">Create Post</button>
+        </form>
 
-<th:block th:insert="~{partials/partials.html :: scripts}"></th:block>
-</body>
+        <th:block th:insert="~{partials/partials.html :: scripts}"></th:block>
+    </body>
 </html>

@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Post</title>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Post</title>
+        <th:block th:insert="~{partials/partials.html :: head-styles}">
+        </th:block>
+    </head>
+    <body>
+        <nav th:replace="~{partials/partials.html :: navbar}"></nav>
 
-<!-- DISPLAYING THE POSTS TITLE AND BODY THAT HAS BEEN PASSED IN FROM -->
-<h1 th:text="${indiPost.title}"></h1>
+        <!-- DISPLAYING THE POSTS TITLE AND BODY THAT HAS BEEN PASSED IN FROM -->
+        <h1 th:text="${indiPost.title}"></h1>
 
-<h5 th:text="${indiPost.body}"></h5>
+        <h5 th:text="${indiPost.body}"></h5>
 
-<!--  <a>TAG AROUND BUTTON TAG ENABLES REDIRECT TO "EDIT-FORM" ON CLICK-->
-<a th:href="@{'/posts/' + ${indiPost.getId()} + '/edit'}" th:object="${indiPost}">
-<button>Edit this Post</button>
-</a>
-<a th:href="@{/posts/show}">
-    <button>Cancel</button>
-</a>
-
-</body>
+        <!--  <a>TAG AROUND BUTTON TAG ENABLES REDIRECT TO "EDIT-FORM" ON CLICK-->
+        <a th:href="@{'/posts/' + ${indiPost.getId()} + '/edit'}" th:object="${indiPost}">
+            <button>Edit this Post</button>
+        </a>
+        <a th:href="@{/posts/show}">
+            <button>Cancel</button>
+        </a>
+        <th:block th:insert="~{partials/partials.html :: scripts}"></th:block>
+    </body>
 </html>
