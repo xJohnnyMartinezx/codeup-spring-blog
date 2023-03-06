@@ -44,7 +44,7 @@ public class PostController {
     @PostMapping("/posts/create")
     public String createNewPost(@ModelAttribute Post post) {
 //        MANUALLY GETTING/PICKING A USER
-        User user = userRepository.getById(1L);
+        User user = userRepository.findById(1L).get();
 //        ASSIGNING THE CREATED POST TO THE USER
         post.setUser(user);
 //        SENDS A CONFIRMATION EMAIL TO THE USER STATING THAT A NEW POST HAS BEEN CREATED.
@@ -84,14 +84,6 @@ public class PostController {
 //            postRepository.save(newPost);
 //            return "redirect:/posts/show";
 //        }
-
-
-//       ****** View posts by ID *******
-
-//    @GetMapping("post/individual-post")
-//    public String viewPostById() {
-//        return "posts/individual-post";
-//    }
 
     @GetMapping("/posts/{id}")
     public String postById(@PathVariable long id, Model model) {
