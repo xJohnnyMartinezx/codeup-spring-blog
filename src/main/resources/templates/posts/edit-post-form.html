@@ -18,6 +18,9 @@
         <textarea th:field="*{body}" rows="10" cols="20">
         </textarea>
         <button type="submit">Submit Edits</button>
+<!--        <a th:href="@{posts/show.html}">-->
+            <button>Cancel</button>
+<!--        </a>-->
     </form>
 
     <th:block th:insert="~{partials/partials.html :: scripts}"></th:block>

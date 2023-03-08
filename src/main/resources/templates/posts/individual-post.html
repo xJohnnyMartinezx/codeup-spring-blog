@@ -18,9 +18,6 @@
         <a th:href="@{'/posts/' + ${indiPost.getId()} + '/edit'}" th:object="${indiPost}">
             <button>Edit this Post</button>
         </a>
-        <a th:href="@{/posts/show}">
-            <button>Cancel</button>
-        </a>
         <th:block th:insert="~{partials/partials.html :: scripts}"></th:block>
     </body>
 </html>
