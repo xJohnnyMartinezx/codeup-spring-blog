@@ -17,13 +17,13 @@ public class HelloController {
 
     @GetMapping("/join")
     public String showJoinForm() {
-        return "join";
+        return "sign-up";
     }
 
     @PostMapping("/join")
     public String joinCohort(@RequestParam(name = "cohort") String cohort, Model model) {
         model.addAttribute("cohort", "Welcome to " + cohort + "!");
-        return "join";
+        return "sign-up";
     }
 
 
