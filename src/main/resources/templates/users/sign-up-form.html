@@ -10,15 +10,15 @@
     <nav th:replace="~{partials/partials.html :: navbar}"></nav>
 
     <h1>Create an account</h1>
-    <form th:method="POST" th:action="@{/sign-up}" th:object="${user}">
+    <form th:method="POST" th:action="@{/signup}" th:object="${user}">
         <label for="username">Username</label>
-        <input type="text" id="username" th:field="*{username}" />
+        <input type="text" id="username" th:field="*{username}">
 
         <label for="email">Email</label>
-        <input id="email" th:field="*{email}" />
+        <input id="email" th:field="*{email}">
 
         <label for="password">Password</label>
-        <input id="password" type="password" th:field="*{password}" />
+        <input id="password" type="password" th:field="*{password}">
 
         <button type="submit">Sign me up!</button>
     </form>
