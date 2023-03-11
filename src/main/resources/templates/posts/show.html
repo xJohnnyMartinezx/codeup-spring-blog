@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <head>
         <meta charset="UTF-8">
         <title>Show Page</title>
@@ -7,6 +7,10 @@
         </th:block>
     </head>
     <body>
+    <div sec:authorize="isAuthenticated()">
+    <div th:text="${#authentication.principal.username}"></div>
+        <div th:text="${#authentication.principal.email}"></div>
+    </div>
         <nav th:replace="~{partials/partials.html :: navbar}"></nav>
 
         You are viewing the show page. Here is a list of posts.
@@ -21,4 +25,5 @@
 
         <th:block th:insert="~{partials/partials.html :: scripts}"></th:block>
     </body>
+
 </html>

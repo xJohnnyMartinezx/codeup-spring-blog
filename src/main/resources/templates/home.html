@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <head>
         <meta charset="UTF-8" />
         <title>Home</title>
@@ -8,6 +8,9 @@
     </head>
     <body>
         <nav th:replace="~{partials/partials.html :: navbar}"></nav>
+        <div sec:authorize="isAuthenticated()">
+            <div th:text="${'Welcome ' + #authentication.principal.username}"></div>
+        </div>
 
 
         <h1>This is the home page...</h1>

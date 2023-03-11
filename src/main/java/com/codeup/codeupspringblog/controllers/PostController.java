@@ -5,6 +5,7 @@ import com.codeup.codeupspringblog.models.User;
 import com.codeup.codeupspringblog.repositories.PostRepository;
 import com.codeup.codeupspringblog.repositories.UserRepository;
 import com.codeup.codeupspringblog.service.EmailService;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -31,6 +32,9 @@ public class PostController {
     public String viewAllPosts(Model model) {
     //   USING MODEL BINDING TO GET A LIST OF ALL POST BY USING POST REPO findAll() METHOD. ATTRIBUTE NAME IS: postList.
         model.addAttribute("postList", postRepository.findAll());
+//        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        System.out.println(user.getUsername());
+
         return "posts/show";
     }
 
