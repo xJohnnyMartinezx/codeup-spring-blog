@@ -48,7 +48,9 @@ public class PostController {
     @PostMapping("/posts/create")
     public String createNewPost(@ModelAttribute Post post) {
 //        MANUALLY GETTING/PICKING A USER
-        User user = userRepository.findById(1L).get();
+        //        User user = userRepository.findById(1L).get();
+//        vvv GETTING THE LOGGED IN USER
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //        ASSIGNING THE CREATED POST TO THE USER
         post.setUser(user);
 //        SENDS A CONFIRMATION EMAIL TO THE USER STATING THAT A NEW POST HAS BEEN CREATED.
