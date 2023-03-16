@@ -42,16 +42,16 @@ public class SecurityConfiguration {
                 /* Logout configuration */
                 .and()
                 .logout()
-                .logoutSuccessUrl("/home") // append a query string value
+                .logoutSuccessUrl("/") // append a query string value
                 /* Pages that can be viewed without having to log in */
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers("/", "/home", "/posts/show", "/posts/{id}", "/signup") // anyone can see the home and the ads pages
+                .requestMatchers("/", "/home", "/signup", "/posts/show") // anyone can see the home and the ads pages
                 .permitAll()
                 /* Pages that require authentication */
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers("/posts/create", "/posts/{id}/edit")
+                .requestMatchers("/posts/create", "/posts/{}/edit", "/posts/create-form")
                 .authenticated();
         return http.build();
     }

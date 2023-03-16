@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.*;
 public class PostController {
 
     //    ***** DEPENDENCY INJECTION FIELD/S *****
-    private PostRepository postRepository;
-    private UserRepository userRepository;
+    private final PostRepository postRepository;
+    private final UserRepository userRepository;
     private final EmailService emailService;
 
 
@@ -39,7 +39,7 @@ public class PostController {
     }
 
     //    ****** View form for creating a post (MODEL BIDING) *******
-    @GetMapping("/posts/create")
+    @GetMapping("/posts/create-form")
     public String createPostsForm(Model model) {
         model.addAttribute("post", new Post());
         return "posts/create-posts-form";
