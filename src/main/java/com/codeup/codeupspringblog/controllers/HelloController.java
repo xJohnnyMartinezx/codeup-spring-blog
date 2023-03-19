@@ -1,8 +1,13 @@
 package com.codeup.codeupspringblog.controllers;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Controller
 public class HelloController {
@@ -17,7 +22,7 @@ public class HelloController {
 
     @GetMapping("/join")
     public String showJoinForm() {
-        return "sign-up";
+        return "users/sign-up-form";
     }
 
     @PostMapping("/join")
@@ -25,6 +30,5 @@ public class HelloController {
         model.addAttribute("cohort", "Welcome to " + cohort + "!");
         return "sign-up";
     }
-
 
 }
