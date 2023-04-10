@@ -51,7 +51,7 @@ public class SecurityConfiguration {
                 /* Pages that require authentication */
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers("/posts/create", "/posts/{}/edit", "/posts/create-form")
+                .requestMatchers("/posts/create", "/posts/{}/edit","/posts/{id}", "/posts/create-form", "/roll-dice/**")
                 .authenticated();
         return http.build();
     }
